@@ -1,4 +1,4 @@
-name: object-detection-tutorial
+name: lego-brick-classifier
 channels:
 - conda-forge
 - defaults
