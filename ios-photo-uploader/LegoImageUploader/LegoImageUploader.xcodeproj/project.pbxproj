@@ -12,9 +12,15 @@
 		6E6C31032006F45B008E8816 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C31012006F45B008E8816 /* Main.storyboard */; };
 		6E6C31052006F45B008E8816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C31042006F45B008E8816 /* Assets.xcassets */; };
 		6E6C31082006F45B008E8816 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C31062006F45B008E8816 /* LaunchScreen.storyboard */; };
+		6E6C31102006F570008E8816 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C310F2006F570008E8816 /* Podfile */; };
+		6E9552552006F66B00FDF574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E9552542006F66B00FDF574 /* GoogleService-Info.plist */; };
+		6E9552572006FDA600FDF574 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E9552562006FDA600FDF574 /* secrets.plist */; };
+		E4BC1EE837B9DAAC5449E56C /* Pods_LegoImageUploader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018FD971440458703401A1D0 /* Pods_LegoImageUploader.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		018FD971440458703401A1D0 /* Pods_LegoImageUploader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LegoImageUploader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5045EF80F15EB195526A6566 /* Pods-LegoImageUploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LegoImageUploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader.debug.xcconfig"; sourceTree = "<group>"; };
 		6E6C30FA2006F45B008E8816 /* LegoImageUploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegoImageUploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E6C30FD2006F45B008E8816 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E6C30FF2006F45B008E8816 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,10 @@
 		6E6C31042006F45B008E8816 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E6C31072006F45B008E8816 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E6C31092006F45B008E8816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E6C310F2006F570008E8816 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6E9552542006F66B00FDF574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6E9552562006FDA600FDF574 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
+		81D550BA696D074333F1C059 /* Pods-LegoImageUploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LegoImageUploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BC1EE837B9DAAC5449E56C /* Pods_LegoImageUploader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +49,11 @@
 		6E6C30F12006F45B008E8816 = {
 			isa = PBXGroup;
 			children = (
+				6E6C310F2006F570008E8816 /* Podfile */,
 				6E6C30FC2006F45B008E8816 /* LegoImageUploader */,
 				6E6C30FB2006F45B008E8816 /* Products */,
+				DE5E61FD03AE89206EF32B17 /* Pods */,
+				95CCDDDB403374C625F6766F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,9 +73,28 @@
 				6E6C31012006F45B008E8816 /* Main.storyboard */,
 				6E6C31042006F45B008E8816 /* Assets.xcassets */,
 				6E6C31062006F45B008E8816 /* LaunchScreen.storyboard */,
+				6E9552542006F66B00FDF574 /* GoogleService-Info.plist */,
 				6E6C31092006F45B008E8816 /* Info.plist */,
+				6E9552562006FDA600FDF574 /* secrets.plist */,
 			);
 			path = LegoImageUploader;
+			sourceTree = "<group>";
+		};
+		95CCDDDB403374C625F6766F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				018FD971440458703401A1D0 /* Pods_LegoImageUploader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE5E61FD03AE89206EF32B17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5045EF80F15EB195526A6566 /* Pods-LegoImageUploader.debug.xcconfig */,
+				81D550BA696D074333F1C059 /* Pods-LegoImageUploader.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E6C310C2006F45B008E8816 /* Build configuration list for PBXNativeTarget "LegoImageUploader" */;
 			buildPhases = (
+				C7F3A67B20A4F17BCACAA481 /* [CP] Check Pods Manifest.lock */,
 				6E6C30F62006F45B008E8816 /* Sources */,
 				6E6C30F72006F45B008E8816 /* Frameworks */,
 				6E6C30F82006F45B008E8816 /* Resources */,
+				46E067E17F950A9C63E85DEA /* [CP] Embed Pods Frameworks */,
+				03E38A32E3B0E5C86A1BEA4D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,11 +161,75 @@
 			files = (
 				6E6C31082006F45B008E8816 /* LaunchScreen.storyboard in Resources */,
 				6E6C31052006F45B008E8816 /* Assets.xcassets in Resources */,
+				6E9552572006FDA600FDF574 /* secrets.plist in Resources */,
+				6E9552552006F66B00FDF574 /* GoogleService-Info.plist in Resources */,
+				6E6C31102006F570008E8816 /* Podfile in Resources */,
 				6E6C31032006F45B008E8816 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03E38A32E3B0E5C86A1BEA4D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader-resources.sh",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46E067E17F950A9C63E85DEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7F3A67B20A4F17BCACAA481 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LegoImageUploader-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6E6C30F62006F45B008E8816 /* Sources */ = {
@@ -272,6 +372,7 @@
 		};
 		6E6C310D2006F45B008E8816 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5045EF80F15EB195526A6566 /* Pods-LegoImageUploader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +388,7 @@
 		};
 		6E6C310E2006F45B008E8816 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D550BA696D074333F1C059 /* Pods-LegoImageUploader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
