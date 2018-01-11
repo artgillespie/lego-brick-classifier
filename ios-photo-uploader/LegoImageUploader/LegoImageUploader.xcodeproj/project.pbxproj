@@ -12,9 +12,8 @@
 		6E6C31032006F45B008E8816 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C31012006F45B008E8816 /* Main.storyboard */; };
 		6E6C31052006F45B008E8816 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C31042006F45B008E8816 /* Assets.xcassets */; };
 		6E6C31082006F45B008E8816 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C31062006F45B008E8816 /* LaunchScreen.storyboard */; };
-		6E6C31102006F570008E8816 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 6E6C310F2006F570008E8816 /* Podfile */; };
 		6E9552552006F66B00FDF574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E9552542006F66B00FDF574 /* GoogleService-Info.plist */; };
-		6E9552572006FDA600FDF574 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E9552562006FDA600FDF574 /* secrets.plist */; };
+		6E95525A2007B35F00FDF574 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E9552562006FDA600FDF574 /* secrets.plist */; };
 		E4BC1EE837B9DAAC5449E56C /* Pods_LegoImageUploader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018FD971440458703401A1D0 /* Pods_LegoImageUploader.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +30,7 @@
 		6E6C310F2006F570008E8816 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6E9552542006F66B00FDF574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6E9552562006FDA600FDF574 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
+		6E9552582007AE2600FDF574 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		81D550BA696D074333F1C059 /* Pods-LegoImageUploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LegoImageUploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +49,7 @@
 		6E6C30F12006F45B008E8816 = {
 			isa = PBXGroup;
 			children = (
+				6E9552582007AE2600FDF574 /* README.md */,
 				6E6C310F2006F570008E8816 /* Podfile */,
 				6E6C30FC2006F45B008E8816 /* LegoImageUploader */,
 				6E6C30FB2006F45B008E8816 /* Products */,
@@ -161,9 +162,8 @@
 			files = (
 				6E6C31082006F45B008E8816 /* LaunchScreen.storyboard in Resources */,
 				6E6C31052006F45B008E8816 /* Assets.xcassets in Resources */,
-				6E9552572006FDA600FDF574 /* secrets.plist in Resources */,
+				6E95525A2007B35F00FDF574 /* secrets.plist in Resources */,
 				6E9552552006F66B00FDF574 /* GoogleService-Info.plist in Resources */,
-				6E6C31102006F570008E8816 /* Podfile in Resources */,
 				6E6C31032006F45B008E8816 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,12 +198,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-LegoImageUploader/Pods-LegoImageUploader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

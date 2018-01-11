@@ -9,13 +9,13 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    var user: User?
+    var dbRef: DatabaseReference!
     
     func firebaseDidAuthenticate() {
-        // getImageCount()
+        dbRef = Database.database().reference()
     }
 
     override func viewDidLoad() {
@@ -28,7 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let auth = Auth.auth()
             if let u = auth.currentUser  {
                 print("Already signed in! \(u.providerData[0].email!)")
-                self.user = u
                 firebaseDidAuthenticate()
             } else {
                 let email = dict.value(forKey: "email")! as! String
@@ -38,7 +37,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         print("Error logging in! \(error)")
                     } else if let user = u {
                         print("Logged in! \(user.providerData[0].email!)")
-                        self.user = user
                         self.firebaseDidAuthenticate()
                     } else {
                         print("Both user and error are nil :-(")
@@ -66,39 +64,58 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
-    func getImageCount() {
-        // no way to enumerate objects in a folder in the firebase api
-        // recommended approach is to track metadata in firebase database
-        let storage = Storage.storage()
-        let storageRef = storage.reference(withPath: "images/brick_2x2_white")
-        storageRef.getMetadata { (metadata, error) in
-            guard let metadata = metadata else {
-                print("error fetching metadata: \(error!)")
-                return
-            }
-            print("images folder metadata: \(metadata)")
-        }
+    func getImageCount(_ type: String) {
+        // TODO: enumerate on the type's path
+        dbRef.child("images/\(type)")
+    }
+    
+    func scaleImage(_ image: UIImage, scaleBy: CGFloat) -> UIImage? {
+        let size = image.size.applying(CGAffineTransform(scaleX: scaleBy, y: scaleBy))
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+        image.draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage
     }
     
     func uploadImage(_ image: UIImage, type: String) {
-        let storage = Storage.storage()
-        let storageRef = storage.reference(withPath: "images/\(type)/\(UUID().uuidString)")
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
-            print("couldn't get jpg representation")
+        let imageID = UUID().uuidString
+        guard let scaledImage = self.scaleImage(image, scaleBy: 0.5) else {
+            print("Couldn't scale image")
             return
         }
-        let uploadTask = storageRef.putData(data, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                print("Error uploading image: \(error!)")
+        
+        // first write metadata to the realtime database so we can find this image later
+        let mdRef = dbRef.child("images/\(type)/\(imageID)")
+        mdRef.setValue(false, withCompletionBlock: { (error, _) in
+            if error != nil {
+                print("Couldn't write metadata to database: \(error!)")
                 return
             }
-            print("Upload OK! \(metadata)")
-        }
-        uploadTask.observe(.progress) { snapshot in
-            let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
-                / Double(snapshot.progress!.totalUnitCount)
-            print("Progress : \(percentComplete)")
-        }
+            let storage = Storage.storage()
+            let storageRef = storage.reference(withPath: "images/\(type)/\(imageID).jpg")
+            guard let data = UIImageJPEGRepresentation(scaledImage, 0.75) else {
+                print("couldn't get jpg representation")
+                return
+            }
+            let uploadTask = storageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print("Error uploading image: \(error!)")
+                    return
+                }
+                mdRef.setValue(true)
+                print("Upload OK! \(metadata)")
+            }
+            uploadTask.observe(.progress) { snapshot in
+                let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                    / Double(snapshot.progress!.totalUnitCount)
+                print("Progress : \(percentComplete)")
+            }
+
+        })
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -113,6 +130,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Image picker canceled!")
+        picker.dismiss(animated: true, completion: nil)
     }
 
 }

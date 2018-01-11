@@ -2,6 +2,7 @@ use_frameworks!
 platform :ios, '11.0'
 
 pod 'Firebase/Auth'
+pod 'Firebase/Database'
 pod 'Firebase/Storage'
 
 target 'LegoImageUploader' do
