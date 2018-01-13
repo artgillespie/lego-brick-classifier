@@ -14,6 +14,8 @@ import FirebaseDatabase
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var dbRef: DatabaseReference!
     
+    @IBOutlet weak var progressView: UIProgressView!
+    
     func firebaseDidAuthenticate() {
         dbRef = Database.database().reference()
     }
@@ -90,6 +92,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // first write metadata to the realtime database so we can find this image later
         let mdRef = dbRef.child("images/\(type)/\(imageID)")
+        progressView.isHidden = false
         mdRef.setValue(false, withCompletionBlock: { (error, _) in
             if error != nil {
                 print("Couldn't write metadata to database: \(error!)")
@@ -110,9 +113,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("Upload OK! \(metadata)")
             }
             uploadTask.observe(.progress) { snapshot in
-                let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                let percentComplete = Double(snapshot.progress!.completedUnitCount)
                     / Double(snapshot.progress!.totalUnitCount)
-                print("Progress : \(percentComplete)")
+                self.progressView.progress = Float(percentComplete)
+            }
+            uploadTask.observe(.success) {snapshot in
+                self.progressView.isHidden = true
             }
 
         })
@@ -120,16 +126,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
-        let type = info[UIImagePickerControllerMediaType] as! String
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        print("Image Picked! \(type)")
-        uploadImage(image, type: "test")
-        
+        uploadImage(image, type: "test")        
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("Image picker canceled!")
         picker.dismiss(animated: true, completion: nil)
     }
 
