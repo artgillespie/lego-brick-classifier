@@ -11,10 +11,11 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var dbRef: DatabaseReference!
     
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var typePickerView: UIPickerView!
     
     func firebaseDidAuthenticate() {
         dbRef = Database.database().reference()
@@ -22,6 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        typePickerView.dataSource = self
+        typePickerView.delegate = self
         var myDict: NSDictionary?
         if let path = Bundle.main.path(forResource: "secrets", ofType: "plist") {
             myDict = NSDictionary(contentsOfFile: path)
@@ -127,13 +130,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        uploadImage(image, type: "test")        
+        let typeIdx = typePickerView.selectedRow(inComponent: 0)
+        let type = types[typeIdx]
+        uploadImage(image, type: type)        
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    let types = ["Brick/2x2/White", "Plate/2x2/White"]
 
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return types.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return types[row]
+    }
 }
 

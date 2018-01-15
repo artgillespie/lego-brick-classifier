@@ -30,6 +30,12 @@
                                     <action selector="handlePhotoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VfY-Oc-qAg"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-zI-rV5">
+                                <rect key="frame" x="0.0" y="458" width="414" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="hDN-8k-OB2"/>
+                                </constraints>
+                            </pickerView>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TGa-p1-mov">
                                 <rect key="frame" x="20" y="643" width="374" height="2"/>
                             </progressView>
@@ -37,16 +43,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1wa-rb-kQw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="856-yd-Twb"/>
+                            <constraint firstItem="H5E-zI-rV5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="438" id="QM7-hq-97d"/>
                             <constraint firstAttribute="bottom" secondItem="1wa-rb-kQw" secondAttribute="bottom" constant="20" symbolic="YES" id="RYP-8H-zV9"/>
                             <constraint firstItem="1wa-rb-kQw" firstAttribute="top" secondItem="TGa-p1-mov" secondAttribute="bottom" constant="41" id="kHE-K4-VnF"/>
                             <constraint firstItem="TGa-p1-mov" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="lRJ-ti-2ln"/>
                             <constraint firstItem="1wa-rb-kQw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="lxx-tq-1pL"/>
+                            <constraint firstItem="H5E-zI-rV5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="quz-Rg-RPF"/>
                             <constraint firstItem="TGa-p1-mov" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="viZ-t2-7vt"/>
+                            <constraint firstItem="H5E-zI-rV5" firstAttribute="centerX" secondItem="TGa-p1-mov" secondAttribute="centerX" id="yeg-Do-ftw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="progressView" destination="TGa-p1-mov" id="SYJ-H1-9wr"/>
+                        <outlet property="typePickerView" destination="H5E-zI-rV5" id="dQb-yC-qYh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
